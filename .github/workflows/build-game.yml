@@ -246,6 +246,9 @@ jobs:
           path: /usr/share/hxcpp
           key: haxe-hxcpp-${{ runner.os }}-${{ github.ref_name }}-${{ github.sha }}
           restore-keys: haxe-hxcpp-${{ runner.os }}-${{ github.ref_name }}
+      - name: Haxelib List
+        run: |
+          haxelib list
       - name: Build game
         run: |
           haxelib run lime build ${{ matrix.target }} -v -release --times $BUILD_DEFINES
