@@ -167,6 +167,12 @@ jobs:
           cd .haxelib/hxcpp/git/tools/hxcpp
           haxe compile.hxml
           cd ../../../../..
+      - name: Haxelib List
+        run: |
+          haxelib list  
+      - name: Haxe Version
+        run: |
+          haxe -version
       - name: Build game (windows)
         if: ${{ matrix.target == 'windows' }}
         run: |
@@ -246,9 +252,6 @@ jobs:
           path: /usr/share/hxcpp
           key: haxe-hxcpp-${{ runner.os }}-${{ github.ref_name }}-${{ github.sha }}
           restore-keys: haxe-hxcpp-${{ runner.os }}-${{ github.ref_name }}
-      - name: Haxelib List
-        run: |
-          haxelib list
       - name: Build game
         run: |
           haxelib run lime build ${{ matrix.target }} -v -release --times $BUILD_DEFINES
